@@ -1,0 +1,24 @@
+data:
+  dataset_dir: data/dataset
+  train_ratio: 0.70
+  val_ratio: 0.15
+
+augment:
+  rotate_limit: 15
+  brightness_limit: 0.3
+  flip_lr: 0.5
+  perspective: 0.0003
+
+train:
+  model_variant: s       # n=nano(fast), s=small, m=medium, l=large, x=xlarge
+  epochs: 100
+  image_size: 640        # 1280, 2048 etc.
+  batch_size: 8
+  patience: 20
+
+inference:
+  confidence: 0.30
+  iou_threshold: 0.35
+  use_slicing: true      # SAHI: slice large images for small/dense defects
+  slice_size: 640
+  overlap_ratio: 0.20
