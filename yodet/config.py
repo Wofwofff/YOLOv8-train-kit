@@ -18,43 +18,35 @@ class DataConfig:
         return round(1.0 - self.train_ratio - self.val_ratio, 10)
 
 
-@dataclass
-class AugmentConfig:
-    rotate_limit: int = 15
-    brightness_limit: float = 0.5
-    saturation_limit: float = 0.5
-    flip_lr: float = 0.5
-    flip_ud: float = 0.3
-    perspective: float = 0.0003
-    shear: float = 10.0
-    scale: float = 0.6
-    erasing: float = 0.4
+class _ParamsConfig:
+    def __init__(self, **kwargs: object) -> None:
+        self._params = kwargs
+
+    def __getattr__(self, name: str) -> object:
+        try:
+            return self._params[name]
+        except KeyError:
+            raise AttributeError(name)
+
+    def to_kwargs(self) -> dict:
+        return dict(self._params)
 
 
-@dataclass
-class TrainConfig:
-    model_variant: str = "m"
-    epochs: int = 100
-    image_size: int = 1280
-    batch_size: int = 8
-    patience: int = 50
-    cos_lr: bool = True
-    label_smoothing: float = 0.1
-    multi_scale: bool = True
-    close_mosaic: int = 20
+class AugmentConfig(_ParamsConfig):
+    pass
 
+
+class TrainConfig(_ParamsConfig):
     @property
     def pretrained_weights(self) -> str:
-        return f"yolov8{self.model_variant}.pt"
+        return f"yolov8{self._params['model_variant']}.pt"
+
+    def to_kwargs(self) -> dict:
+        return {k: v for k, v in self._params.items() if k != "model_variant"}
 
 
-@dataclass
-class InferenceConfig:
-    confidence: float = 0.30
-    iou_threshold: float = 0.35
-    use_slicing: bool = True
-    slice_size: int = 640
-    overlap_ratio: float = 0.20
+class InferenceConfig(_ParamsConfig):
+    pass
 
 
 @dataclass

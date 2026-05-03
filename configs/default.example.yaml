@@ -4,11 +4,11 @@ data:
   val_ratio: 0.15
 
 augment:
-  rotate_limit: 15
-  brightness_limit: 0.5
-  saturation_limit: 0.5
-  flip_lr: 0.5
-  flip_ud: 0.3
+  degrees: 15
+  hsv_v: 0.5
+  hsv_s: 0.5
+  fliplr: 0.5
+  flipud: 0.3
   perspective: 0.0003
   shear: 10.0
   scale: 0.6
@@ -17,11 +17,10 @@ augment:
 train:
   model_variant: x       # n=nano(fast), s=small, m=medium, l=large, x=xlarge
   epochs: 100
-  image_size: 1280
-  batch_size: 8
+  imgsz: 1280
+  batch: 8
   patience: 50
   cos_lr: true
-  label_smoothing: 0.1
   multi_scale: true
   close_mosaic: 20
 
