@@ -21,9 +21,14 @@ class DataConfig:
 @dataclass
 class AugmentConfig:
     rotate_limit: int = 15
-    brightness_limit: float = 0.3
+    brightness_limit: float = 0.5
+    saturation_limit: float = 0.5
     flip_lr: float = 0.5
+    flip_ud: float = 0.3
     perspective: float = 0.0003
+    shear: float = 10.0
+    scale: float = 0.6
+    erasing: float = 0.4
 
 
 @dataclass
@@ -32,7 +37,11 @@ class TrainConfig:
     epochs: int = 100
     image_size: int = 1280
     batch_size: int = 8
-    patience: int = 20
+    patience: int = 50
+    cos_lr: bool = True
+    label_smoothing: float = 0.1
+    multi_scale: bool = True
+    close_mosaic: int = 20
 
     @property
     def pretrained_weights(self) -> str:

@@ -5,16 +5,25 @@ data:
 
 augment:
   rotate_limit: 15
-  brightness_limit: 0.3
+  brightness_limit: 0.5
+  saturation_limit: 0.5
   flip_lr: 0.5
+  flip_ud: 0.3
   perspective: 0.0003
+  shear: 10.0
+  scale: 0.6
+  erasing: 0.4
 
 train:
-  model_variant: s       # n=nano(fast), s=small, m=medium, l=large, x=xlarge
+  model_variant: x       # n=nano(fast), s=small, m=medium, l=large, x=xlarge
   epochs: 100
-  image_size: 640        # 1280, 2048 etc.
+  image_size: 1280
   batch_size: 8
-  patience: 20
+  patience: 50
+  cos_lr: true
+  label_smoothing: 0.1
+  multi_scale: true
+  close_mosaic: 20
 
 inference:
   confidence: 0.30

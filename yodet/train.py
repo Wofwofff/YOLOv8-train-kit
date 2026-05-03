@@ -24,16 +24,26 @@ def train(dataset_yaml: Path, cfg: TrainConfig, aug: AugmentConfig) -> Path:
         batch=cfg.batch_size,
         patience=cfg.patience,
         name="yodet",
-        # Rotation, flip, perspective
+        device=0 if __import__("torch").cuda.is_available() else "cpu",
+        # Augmentation
         degrees=aug.rotate_limit,
         fliplr=aug.flip_lr,
+        flipud=aug.flip_ud,
         perspective=aug.perspective,
+        shear=aug.shear,
+        scale=aug.scale,
+        erasing=aug.erasing,
         hsv_v=aug.brightness_limit,
+        hsv_s=aug.saturation_limit,
         # Mosaic + MixUp + CopyPaste
         mosaic=1.0,
-        close_mosaic=10,
+        close_mosaic=cfg.close_mosaic,
         mixup=0.1,
         copy_paste=0.1,
+        # Training
+        cos_lr=cfg.cos_lr,
+        label_smoothing=cfg.label_smoothing,
+        multi_scale=cfg.multi_scale,
         workers=2,
     )
 
