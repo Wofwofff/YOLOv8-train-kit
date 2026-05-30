@@ -4,7 +4,7 @@ from pathlib import Path
 from sahi import AutoDetectionModel
 from sahi.predict import get_sliced_prediction
 from ultralytics import YOLO
-from yodet.config import InferenceConfig
+from yolokit.config import InferenceConfig
 
 log = logging.getLogger(__name__)
 

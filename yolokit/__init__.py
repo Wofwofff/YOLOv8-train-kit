@@ -1,3 +1,3 @@
-from yodet.config import Config
+from yolokit.config import Config
 
 __all__ = ["Config"]

@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "yolo_detection_trainer"
+name = "yolokit"
 version = "0.1.0"
 license = { text = "AGPL-3.0" }
 requires-python = ">=3.10"

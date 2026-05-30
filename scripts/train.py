@@ -3,8 +3,8 @@ import logging
 import sys
 from pathlib import Path
 
-from yodet.config import Config
-from yodet.train import train
+from yolokit.config import Config
+from yolokit.train import train
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s  %(message)s")
 log = logging.getLogger(__name__)

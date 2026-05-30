@@ -3,8 +3,8 @@ import logging
 import sys
 from pathlib import Path
 
-from yodet.config import Config, InferenceConfig
-from yodet.predict import predict
+from yolokit.config import Config, InferenceConfig
+from yolokit.predict import predict
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s  %(message)s")
 log = logging.getLogger(__name__)

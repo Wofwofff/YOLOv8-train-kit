@@ -3,7 +3,7 @@ import logging
 import sys
 from pathlib import Path
 
-from yodet.config import Config
+from yolokit.config import Config
 from ultralytics import YOLO
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s  %(message)s")

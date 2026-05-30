@@ -4,7 +4,7 @@ from pathlib import Path
 import torch
 from ultralytics import YOLO
 
-from yodet.config import AugmentConfig, TrainConfig
+from yolokit.config import AugmentConfig, TrainConfig
 
 log = logging.getLogger(__name__)
 
@@ -20,7 +20,7 @@ def train(dataset_yaml: Path, cfg: TrainConfig, aug: AugmentConfig) -> Path:
 
     results = model.train(
         data=str(dataset_yaml.resolve()),
-        name="yodet",
+        name="yolokit",
         device=0 if torch.cuda.is_available() else "cpu",
         mosaic=1.0,
         workers=2,

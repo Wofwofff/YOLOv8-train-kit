@@ -5,7 +5,7 @@ from pathlib import Path
 
 import yaml
 
-from yodet.config import DataConfig
+from yolokit.config import DataConfig
 
 log = logging.getLogger(__name__)
 
