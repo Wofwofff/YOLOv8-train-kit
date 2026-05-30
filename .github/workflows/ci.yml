@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dev dependencies
+        run: pip install ruff mypy
+
+      - name: Lint
+        run: ruff check src/ scripts/
+
+      - name: Format check
+        run: ruff format --check yolokit/ scripts/
+
+      - name: Type check
+        run: mypy src/
