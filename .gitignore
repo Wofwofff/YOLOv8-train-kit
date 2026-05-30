@@ -3,6 +3,7 @@ default.yaml
 **.pt
 .venv/
 __pycache__/
+.pytest_cache/
 runs/
 **.egg-info
 **.pt
