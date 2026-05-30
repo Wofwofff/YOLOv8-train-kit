@@ -21,10 +21,10 @@ jobs:
         run: pip install ruff mypy
 
       - name: Lint
-        run: ruff check src/ scripts/
+        run: ruff check yolokit/ scripts/
 
       - name: Format check
         run: ruff format --check yolokit/ scripts/
 
       - name: Type check
-        run: mypy src/
+        run: mypy yolokit/
